@@ -2,23 +2,47 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(30.f);
-    shape.setFillColor(sf::Color::Yellow);
+
+    sf::RenderWindow window(sf::VideoMode(640, 480), "My First Game", sf::Style::Titlebar | sf::Style::Close);    
+    sf::Event ev;
+
+    // Game loop
 
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
+        // Event polling
+        while (window.pollEvent(ev)) // whenever we are getting events from window we gonna save them into 'ev' variable
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch (ev.type) // each event has type (klick, press etc.)
+            {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::KeyPressed:
+                    if (ev.key.code == sf::Keyboard::Escape)
+                        window.close();
+                        break;
+            }
         }
+        
+        // Update (frame)
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        // Render
+
+        window.clear(sf::Color::Blue); // clear old frame
+        // ----------------------------------------
+        // Draw your game
+
+
+
+
+
+        // ----------------------------------------
+        window.display(); // Tell up that window is done drawing
+
     }
+    
+    // End of application
 
     return 0;
 }
