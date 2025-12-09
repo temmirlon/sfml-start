@@ -3,7 +3,7 @@
 int main()
 {
 
-    sf::RenderWindow window(sf::VideoMode(640, 480), "My First Game", sf::Style::Titlebar | sf::Style::Close);    
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Game One", sf::Style::Titlebar | sf::Style::Close);    
     sf::Event ev;
 
     // Game loop
