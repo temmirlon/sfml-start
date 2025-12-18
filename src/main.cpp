@@ -1,44 +1,19 @@
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Game.h"
 
 int main()
 {
-
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Game One", sf::Style::Titlebar | sf::Style::Close);    
-    sf::Event ev;
+    // Init Game engine
+    Game game;
 
     // Game loop
-
-    while (window.isOpen())
+    while (game.Running())
     {
-        // Event polling
-        while (window.pollEvent(ev)) // whenever we are getting events from window we gonna save them into 'ev' variable
-        {
-            switch (ev.type) // each event has type (klick, press etc.)
-            {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                case sf::Event::KeyPressed:
-                    if (ev.key.code == sf::Keyboard::Escape)
-                        window.close();
-                        break;
-            }
-        }
-        
         // Update (frame)
+        game.Update();
 
         // Render
-
-        window.clear(sf::Color::Blue); // clear old frame
-        // ----------------------------------------
-        // Draw your game
-
-
-
-
-
-        // ----------------------------------------
-        window.display(); // Tell up that window is done drawing
+        game.Render();
 
     }
     
