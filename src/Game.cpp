@@ -74,8 +74,19 @@ void Game::spawnEnemy()
         - Adds enemy to the vector.
     */
 
-    
+    this->enemy.setPosition(
+        static_cast<float>(rand() % static_cast<int>(this->window->getSize().x - this->enemy.getSize().x)),
+        0.f
+    );
 
+    this->enemy.setFillColor(sf::Color::Green);
+
+    // Spawn enemy
+    this->enemies.push_back(this->enemy);
+    
+    // TODO
+    // Remove Enemies at end of screen
+    
 }
 
 void Game::pollEvents()
@@ -107,7 +118,6 @@ void Game::updateMousePositions()
 
     this->mousePosWindow = sf::Mouse::getPosition(*this->window);
 
-
 }
 
 void Game::updateEnemies()
@@ -117,6 +127,9 @@ void Game::updateEnemies()
 
         Updates the enemies spawn time and spawns enemies
         when the total amount of enemies is small than the maximum.
+        Moves the enemies downwards. 
+        Removes the enemies at the edge of the screen. //TODO
+
     */
 
 
@@ -133,7 +146,14 @@ void Game::updateEnemies()
             this->enemySpawnTimer += 1.f;
     }
     
+    // Move the enemies
+
+    for (auto &e: this->enemies)
+    {
+        e.move(0.f, 1.f);
+    }
     
+
 }
 
 void Game::update()
@@ -146,7 +166,11 @@ void Game::update()
 
 void Game::renderEnemies()
 {
-
+    // Rendering all the enemies
+    for (auto &e: this->enemies)
+    {
+        this->window->draw(e);
+    }
 }
 
 void Game::render()
