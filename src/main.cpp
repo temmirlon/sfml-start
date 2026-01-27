@@ -3,6 +3,11 @@
 
 int main()
 {
+    // Init srand
+    std::srand(static_cast<unsigned>(time(NULL)));
+
+    
+
     // Init Game engine
     Game game;
 
@@ -10,10 +15,10 @@ int main()
     while (game.Running())
     {
         // Update (frame)
-        game.Update();
+        game.update();
 
         // Render
-        game.Render();
+        game.render();
 
     }
     
