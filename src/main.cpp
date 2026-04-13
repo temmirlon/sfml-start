@@ -10,7 +10,7 @@ int main()
     Game game;
 
     // Game loop
-    while (game.Running())
+    while (game.Running() && !game.getEndGame())
     {
         // Update (frame)
         game.update();
