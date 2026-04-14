@@ -2,63 +2,41 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Configure Project",
+            "label": "CMake Configure",
             "type": "shell",
             "command": "cmake",
             "args": [
-                "--preset",
-                "windows-debug"
+                "-S",
+                ".",
+                "-B",
+                "build",
+                "-DCMAKE_PREFIX_PATH=/opt/homebrew/opt/sfml@2",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
             ],
-            "windows": {
-                "args": [
-                    "--preset",
-                    "windows-debug"
-                ]
-            },
-            "osx": {
-                "args": [
-                    "--preset",
-                    "macos-debug"
-                ]
-            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
+            "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "Build Project",
+            "label": "CMake Build",
             "type": "shell",
             "command": "cmake",
             "args": [
                 "--build",
-                "--preset",
-                "windows-debug"
+                "build"
             ],
-            "windows": {
-                "args": [
-                    "--build",
-                    "--preset",
-                    "windows-debug"
-                ]
-            },
-            "osx": {
-                "args": [
-                    "--build",
-                    "--preset",
-                    "macos-debug"
-                ]
-            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "dependsOn": "Configure Project",
+            "dependsOn": "CMake Configure",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "problemMatcher": [
-                "$msCompile"
+                "$gcc"
             ]
         }
     ]

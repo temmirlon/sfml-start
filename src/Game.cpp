@@ -80,7 +80,7 @@ void Game::spawnEnemy()
         0.f
     );
 
-    this->enemy.setFillColor(sf::Color::Yellow);
+    this->enemy.setFillColor(sf::Color::Green);
 
     // Spawn enemy
     this->enemies.push_back(this->enemy);

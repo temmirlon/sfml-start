@@ -1,20 +1,32 @@
 {
     "configurations": [
         {
-            "name": "Windows",
-            "configurationProvider": "ms-vscode.cmake-tools",
+            "name": "macOS",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/homebrew/opt/sfml@2/include"
+            ],
+            "compilerPath": "/usr/bin/clang++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.26100.0",
             "compilerPath": "cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x64"
-        },
-        {
-            "name": "macOS",
-            "configurationProvider": "ms-vscode.cmake-tools",
-            "compilerPath": "/usr/bin/clang++",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "macos-clang-arm64"
         }
     ],
     "version": 4

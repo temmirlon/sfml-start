@@ -1,15 +1,9 @@
 {
-    "cmake.useCMakePresets": "always",
     "cmake.configureOnOpen": true,
-    "cmake.preferredGenerators": [],
-    "cmake.sourceDirectory": "${workspaceFolder}",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "files.associations": {
-        "iostream": "cpp",
-        "vector": "cpp",
-        "ctime": "cpp"
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureSettings": {
+        "CMAKE_PREFIX_PATH": "/opt/homebrew/opt/sfml@2",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
     },
-    "cSpell.words": [
-        "SFML"
-    ]
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
 }

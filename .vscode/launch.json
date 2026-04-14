@@ -2,37 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run sfml_start (Windows)",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/windows-debug/Debug/sfml_start.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build/windows-debug/Debug",
-            "environment": [],
-            "console": "integratedTerminal",
-            "preLaunchTask": "Build Project",
-            "windows": {
-                "program": "${workspaceFolder}/build/windows-debug/Debug/sfml_start.exe",
-                "cwd": "${workspaceFolder}/build/windows-debug/Debug"
-            }
-        },
-        {
-            "name": "Run sfml_start (macOS)",
+            "name": "Run sfml_start",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/macos-debug/sfml_start",
+            "program": "${workspaceFolder}/build/sfml_start",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build/macos-debug",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
-            "preLaunchTask": "Build Project",
-            "osx": {
-                "program": "${workspaceFolder}/build/macos-debug/sfml_start",
-                "cwd": "${workspaceFolder}/build/macos-debug"
-            }
+            "preLaunchTask": "CMake Build"
         }
     ]
 }
