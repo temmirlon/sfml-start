@@ -2,41 +2,63 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "CMake Configure",
+            "label": "Configure Project",
             "type": "shell",
             "command": "cmake",
             "args": [
-                "-S",
-                ".",
-                "-B",
-                "build",
-                "-DCMAKE_PREFIX_PATH=/opt/homebrew/opt/sfml@2",
-                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+                "--preset",
+                "windows-debug"
             ],
+            "windows": {
+                "args": [
+                    "--preset",
+                    "windows-debug"
+                ]
+            },
+            "osx": {
+                "args": [
+                    "--preset",
+                    "macos-debug"
+                ]
+            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "CMake Build",
+            "label": "Build Project",
             "type": "shell",
             "command": "cmake",
             "args": [
                 "--build",
-                "build"
+                "--preset",
+                "windows-debug"
             ],
+            "windows": {
+                "args": [
+                    "--build",
+                    "--preset",
+                    "windows-debug"
+                ]
+            },
+            "osx": {
+                "args": [
+                    "--build",
+                    "--preset",
+                    "macos-debug"
+                ]
+            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "dependsOn": "CMake Configure",
+            "dependsOn": "Configure Project",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "problemMatcher": [
-                "$gcc"
+                "$msCompile"
             ]
         }
     ]
