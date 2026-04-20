@@ -27,6 +27,23 @@ void Game::initWindow()
 
 }
 
+void Game::initFonts()
+{
+    if (this->font.loadFromFile("Fonts/MinecraftiaRegular.ttf"))
+    {
+        std::cout << "ERROR::GAME::INITFONTS::Failed to load font!" << "\n";  
+    }
+    
+}
+
+void Game::initText()
+{
+    this->uiText.setFont(this->font);
+    this->uiText.setCharacterSize(20);
+    this->uiText.setFillColor(sf::Color::White);
+    this->uiText.setString("NONE");
+}
+
 void Game::initEnemies()
 {
     this->enemy.setPosition(10.f, 10.f);
@@ -43,6 +60,8 @@ Game::Game()
 {
     this->initVariable();
     this->initWindow();
+    this->initText();
+    this->initFonts();
     this->initEnemies();
 }
 
@@ -80,8 +99,8 @@ void Game::spawnEnemy()
         0.f
     );
 
-    this->enemy.setFillColor(sf::Color::Yellow);
-
+    this->enemy.setFillColor(sf::Color::Green);
+    
     // Spawn enemy
     this->enemies.push_back(this->enemy);
     
@@ -119,6 +138,16 @@ void Game::updateMousePositions()
 
     this->mousePosWindow = sf::Mouse::getPosition(*this->window);
     this->mousePosView = this->window->mapPixelToCoords(this->mousePosWindow);
+}
+
+void Game::updateText()
+{
+    std::stringstream ss;
+    
+    ss << "Points: " << this->points << "\n"
+        << "Health: " << this->health << "\n";
+
+    this->uiText.setString(ss.str());
 }
 
 void Game::updateEnemies()
@@ -181,7 +210,7 @@ void Game::updateEnemies()
                     
                     // Gain points
                     this->points += 1.f;
-                    std::cout << "Points" << this->points << "\n";
+                    std::cout << "Points: " << this->points << "\n";
                 }
             }
         }
@@ -199,6 +228,9 @@ void Game::update()
     if (this->endGame == false)
     {
         this->updateMousePositions();
+
+        this->updateText();
+
         this->updateEnemies();
     }
 
@@ -208,12 +240,17 @@ void Game::update()
     
 }
 
-void Game::renderEnemies()
+void Game::renderText(sf::RenderTarget& target)
+{
+    target.draw(this->uiText);
+}
+
+void Game::renderEnemies(sf::RenderTarget& target)
 {
     // Rendering all the enemies
     for (auto &e: this->enemies)
     {
-        this->window->draw(e);
+        target.draw(e);
     }
 }
 
@@ -234,7 +271,9 @@ void Game::render()
 
     // Draw game objects
 
-    this->renderEnemies();
+    this->renderEnemies(*this->window);
+
+    this->renderText(*this->window);
 
     this->window->display();
 
