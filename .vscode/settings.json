@@ -11,5 +11,9 @@
     },
     "cSpell.words": [
         "SFML"
-    ]
+    ],
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/macos-debug/compile_commands.json",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.autocomplete": "default",
+    "C_Cpp.errorSquiggles": "enabled"
 }
